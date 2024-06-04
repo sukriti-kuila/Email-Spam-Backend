@@ -11,7 +11,7 @@ model = joblib.load('model.pkl')
 
 import string
 import nltk
-nltk.download('all')
+# nltk.download('all')
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 ps=PorterStemmer()
@@ -36,12 +36,11 @@ def data_process(t):
     
     return " ".join(l)
 
-@app.route('/predict/<text>', methods=['GET'])
-def predict(text):
+@app.route('/predict', methods=['POST'])
+def predict():
+    req = request.get_json()
+    input_text = req['data']
     print("Received request...")
-
-    # Get input data from URL parameter
-    input_text = text
 
     # Perform data preprocessing
     processed_text = data_process(input_text)
