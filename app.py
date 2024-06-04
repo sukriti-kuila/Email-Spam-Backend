@@ -11,7 +11,7 @@ model = joblib.load('model.pkl')
 
 import string
 import nltk
-# nltk.download('all')
+nltk.download('all')
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 ps=PorterStemmer()
